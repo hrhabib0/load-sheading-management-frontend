@@ -1,5 +1,6 @@
 import Footer from '@/components/layout/public/Footer'
 import Header from '@/components/layout/public/Header'
+import { Toaster } from '@/components/ui/toast'
 import React, { ReactNode } from 'react'
 
 export default function layout({children}: {children: ReactNode}) {
@@ -8,6 +9,7 @@ export default function layout({children}: {children: ReactNode}) {
         <Header />
         <main className='flex-1'>
           {children}
+          <Toaster />
         </main>
         <Footer />
     </div>
