@@ -1,8 +1,34 @@
-
+"use client"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useGetMe, useLogout } from "@/hooks";
+import { toast } from "@/components/ui/toast";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Header = () => {
+    const {data, isLoading} = useGetMe();
+    const {mutate:logout} = useLogout();
+    const queryClient = useQueryClient();
+    
+    const handleLogout = () =>{
+        logout(undefined, {
+            onSuccess: () => {
+                toast.add({
+                    title: "Good Bye!",
+                    description: "Logged out successfully",
+                    type: "success",
+                });
+                queryClient.removeQueries({queryKey:["user"]});
+            },
+            onError: () => {
+                toast.add({
+                    title: "Logout failed",
+                    description: "Something Went Wrong",
+                    type: "error",
+                });
+            },
+        })
+    }
     return (
         <header className="border-b bg-background">
             <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
@@ -46,11 +72,22 @@ const Header = () => {
                 </nav>
 
                 {/* Login */}
-                <Button>
-                    <Link href="/login">
+                <div>
+                    {!isLoading && !data && (
+                    <Button
+                        variant="outline"
+                        render={<Link href="/login">Login</Link>}
+                        nativeButton={false}
+                    >
                         Login
-                    </Link>
-                </Button>
+                    </Button>
+                    )}
+                    {!isLoading && data && (
+                    <Button onClick={handleLogout} variant="destructive">
+                        Logout
+                    </Button>
+                    )}
+                </div>
             </div>
         </header>
     );

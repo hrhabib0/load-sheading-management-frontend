@@ -16,12 +16,12 @@ import { useRouter } from "next/navigation";
 export default function LoginPage() {
 
     const router = useRouter();
-    const { mutate:login, isPending, error } = useLogin();
+    const { mutate:login, isPending } = useLogin();
 
     const form = useForm({
         defaultValues: {
-            email: "",
-            password: "",
+            email: "tester@tecnician.com",
+            password: "Technician@12345",
         },
 
         validators: {
