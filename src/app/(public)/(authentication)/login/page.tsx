@@ -29,14 +29,12 @@ export default function LoginPage() {
         },
 
         onSubmit: async ({ value }) => {
-            console.log("Login data:", value);
             const loginData = {
                 email: value.email,
                 password: value.password,
             };
             login(loginData, {
                 onSuccess : (res)=>{
-                    console.log(res, 'response')
                     toast.add({
                         title: "Login Success",
                         description: `User logged in successfully.`,
