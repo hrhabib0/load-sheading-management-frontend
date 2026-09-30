@@ -69,6 +69,12 @@ const Header = () => {
                     >
                         About Us
                     </Link>
+                    <Link
+                        href="/dashboard"
+                        className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                        Dashboard
+                    </Link>
                 </nav>
 
                 {/* Login */}
