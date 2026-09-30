@@ -5,7 +5,7 @@ import {
     CreditCard,
     FileWarning,
     LayoutDashboard,
-    Map,
+    Map as MapIcon,
     Settings,
     Users,
     Wrench,

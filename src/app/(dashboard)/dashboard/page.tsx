@@ -1,49 +1,25 @@
+"use client"
+import { DashboardContent } from "@/components/dashboard/dashboard-content";
+import { PageLoader } from "@/components/shared/page-loader";
+import { useGetMe } from "@/hooks";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
 export default function DashboardPage() {
+    const router = useRouter();
+    const {data, isLoading, isError} = useGetMe();
+    const user = data?.data;
+    useEffect(()=>{
+        if(!isLoading && (isError || !user)){
+            router.replace("/login");
+        }
+    },[isLoading, isError, user, router])
+       
+    if (isLoading || isError || !user) {
+        return <PageLoader />
+    }
+    
     return (
-        <div className="space-y-6">
-            <div>
-                <h1 className="text-2xl font-bold tracking-tight">
-                    Dashboard
-                </h1>
-
-                <p className="text-muted-foreground">
-                    Welcome back. Here's what's
-                    happening with your electricity
-                    service.
-                </p>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <div className="rounded-xl border bg-background p-5">
-                    <p className="text-sm text-muted-foreground">
-                        Current Status
-                    </p>
-
-                    <p className="mt-2 text-2xl font-bold">
-                        Normal
-                    </p>
-                </div>
-
-                <div className="rounded-xl border bg-background p-5">
-                    <p className="text-sm text-muted-foreground">
-                        Next Load Shedding
-                    </p>
-
-                    <p className="mt-2 text-2xl font-bold">
-                        No schedule
-                    </p>
-                </div>
-
-                <div className="rounded-xl border bg-background p-5 sm:col-span-2 lg:col-span-1">
-                    <p className="text-sm text-muted-foreground">
-                        Open Reports
-                    </p>
-
-                    <p className="mt-2 text-2xl font-bold">
-                        0
-                    </p>
-                </div>
-            </div>
-        </div>
+        <DashboardContent role={user.role} />
     );
 }

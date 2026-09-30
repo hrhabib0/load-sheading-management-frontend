@@ -20,6 +20,7 @@ export type UserRole =
     | "CUSTOMER"
     | "POWER_OPERATOR"
     | "ZONE_MANAGER"
+    | "TECHNICIAN"
     | "ADMIN";
 
 export interface ICurrentUser {
