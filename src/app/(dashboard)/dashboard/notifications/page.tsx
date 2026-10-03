@@ -6,8 +6,10 @@ import {
   Bell,
 } from "lucide-react";
 
-import { useGetMyNotifications } from "@/hooks";
+import { useGetMyNotifications, useMarkNotificationAsRead } from "@/hooks";
 import { NotificationCard } from "@/components/dashboard/Customer Dashboard/notifications/notification-card";
+import { useQueryClient } from "@tanstack/react-query";
+import { INotification } from "@/types/notification.type";
 
 type NotificationFilter = "ALL" | "UNREAD";
 
@@ -35,6 +37,38 @@ export default function NotificationsPage() {
 
     return notifications;
   }, [filter, notifications]);
+
+  const queryClient = useQueryClient();
+
+  const markAsReadMutation = useMarkNotificationAsRead();
+
+  const handleMarkAsRead = (notificationId: string) => {
+    markAsReadMutation.mutate(notificationId, {
+      onSuccess: () => {
+        queryClient.setQueryData<{ data: INotification[] }>(
+          ["my-notifications"],
+          (oldData) => {
+            if (!oldData) {
+              return oldData;
+            }
+
+            return {
+              ...oldData,
+              data: oldData.data.map((notification) =>
+                notification.id === notificationId
+                  ? {
+                      ...notification,
+                      isRead: true,
+                      readAt: new Date().toISOString(),
+                    }
+                  : notification,
+              ),
+            };
+          },
+        );
+      },
+    });
+  };
 
   if (isLoading) {
     return (
@@ -186,6 +220,11 @@ export default function NotificationsPage() {
             <NotificationCard
               key={notification.id}
               notification={notification}
+              onMarkAsRead={handleMarkAsRead}
+              isMarkingAsRead={
+                markAsReadMutation.isPending &&
+                markAsReadMutation.variables === notification.id
+              }
             />
           ))}
         </div>

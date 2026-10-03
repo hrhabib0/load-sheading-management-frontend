@@ -1,5 +1,5 @@
-import { getMyNotifications } from "@/api";
-import { useQuery } from "@tanstack/react-query";
+import { getMyNotifications, markNotificationAsRead } from "@/api";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 
 export const useGetMyNotifications = (enabled = true) => {
@@ -8,5 +8,11 @@ export const useGetMyNotifications = (enabled = true) => {
     queryFn: getMyNotifications,
     enabled,
     retry: false,
+  });
+};
+
+export const useMarkNotificationAsRead = () => {
+  return useMutation({
+    mutationFn: markNotificationAsRead,
   });
 };

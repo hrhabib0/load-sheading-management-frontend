@@ -9,3 +9,9 @@ export const getMyNotifications = () => {
     },
   );
 };
+
+export const markNotificationAsRead = (notificationId: string) => {
+  return apiClient(`/notifications/${notificationId}/read`, {
+    method: "PATCH",
+  });
+};

@@ -58,8 +58,12 @@ const formatNotificationTime = (date: string) => {
 
 export function NotificationCard({
   notification,
+  onMarkAsRead,
+  isMarkingAsRead,
 }: {
   notification: INotification;
+  onMarkAsRead: (id: string) => void;
+  isMarkingAsRead: boolean;
 }) {
   const Icon = getNotificationIcon(notification.type);
 
@@ -92,6 +96,16 @@ export function NotificationCard({
           <p className="mt-1 text-sm leading-6 text-muted-foreground">
             {notification.message}
           </p>
+          {!notification.isRead && (
+            <button
+              type="button"
+              onClick={() => onMarkAsRead(notification.id)}
+              disabled={isMarkingAsRead}
+              className="mt-3 text-sm font-medium text-primary hover:underline disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {isMarkingAsRead ? "Marking..." : "Mark as read"}
+            </button>
+          )}
         </div>
       </div>
     </div>
