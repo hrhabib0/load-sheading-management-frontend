@@ -163,6 +163,11 @@ export const dashboardNavigation = {
             icon: MapIcon,
         },
         {
+            title: "Customer Reports",
+            href: "/dashboard/reports",
+            icon: FileWarning,
+        },
+        {
             title: "Notifications",
             href: "/dashboard/notifications",
             icon: Bell,
