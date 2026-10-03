@@ -41,3 +41,7 @@ export interface ICustomerReport {
     createdAt: string;
     updatedAt: string;
 }
+
+export interface ICreateCustomerReportPayload {
+  description: string;
+}

@@ -1,5 +1,5 @@
-import { getMyCustomerProfile, getMyCustomerReports } from "@/api";
-import { useQuery } from "@tanstack/react-query";
+import { cancelCustomerReport, createCustomerReport, getMyCustomerProfile, getMyCustomerReports } from "@/api";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 
 export const useGetMyCustomerProfile = () => {
@@ -17,4 +17,16 @@ export const useGetMyCustomerReports = (enabled = true) => {
         enabled,
         retry: false,
     });
+};
+
+export const useCancelCustomerReport = () => {
+  return useMutation({
+    mutationFn: cancelCustomerReport,
+  });
+};
+
+export const useCreateCustomerReport = () => {
+  return useMutation({
+    mutationFn: createCustomerReport,
+  });
 };
