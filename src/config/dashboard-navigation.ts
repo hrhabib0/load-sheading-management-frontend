@@ -162,11 +162,7 @@ export const dashboardNavigation = {
             href: "/dashboard/zones",
             icon: MapIcon,
         },
-        {
-            title: "Customer Reports",
-            href: "/dashboard/reports",
-            icon: FileWarning,
-        },
+        
         {
             title: "Notifications",
             href: "/dashboard/notifications",
