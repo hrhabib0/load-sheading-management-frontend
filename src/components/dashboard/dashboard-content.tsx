@@ -8,6 +8,7 @@ import { getPowerStatus } from "./Customer Dashboard/power-status";
 import { PowerOperatorDashboard } from "./power operator/power-operator-dashboard";
 import { ZoneManagerDashboard } from "./zone manager/zone-manager-dashboard";
 import { CustomerDashboard } from "./Customer Dashboard/customer-dashboard";
+import { TechnicianDashboard } from "./technician/technician-dashboard";
 
 interface DashboardContentProps {
     role: UserRole;
@@ -15,23 +16,6 @@ interface DashboardContentProps {
     customerReports?: ICustomerReport[];
     loadsheddingSchedules?: ILoadSheddingSchedule[];
     outageStatus?: IMyAreaOutageStatus
-}
-
-
-
-function TechnicianDashboard() {
-    return (
-        <div>
-            <h1 className="text-2xl font-bold">
-                Technician Dashboard
-            </h1>
-
-            <p className="mt-2 text-muted-foreground">
-                View and manage your assigned work
-                tasks.
-            </p>
-        </div>
-    );
 }
 
 function OperatorDashboard() {

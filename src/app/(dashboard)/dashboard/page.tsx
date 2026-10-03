@@ -16,8 +16,6 @@ export default function DashboardPage() {
         }
     },[ user, router])
 
-    console.log(user.role, "user role")
-
     const {
         data: customerProfile,
         isLoading: isProfileLoading,

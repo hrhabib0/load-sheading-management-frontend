@@ -1,27 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import { AlertTriangle, CalendarDays, FileText } from "lucide-react";
-import { useQueryClient } from "@tanstack/react-query";
 
 import { useCancelCustomerReport, useGetMe, useGetMyCustomerReports } from "@/hooks";
-import { ICustomerReport } from "@/types/customer.type";
 
 import { PageLoader } from "@/components/shared/page-loader";
-import { Button } from "@/components/ui/button";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
 import { useGetAllCustomerReports } from "@/hooks/report.hook";
-import { getReportStatus } from "@/components/dashboard/reports/report-status";
 import { CustomerReports } from "@/components/dashboard/reports/customer-reports";
 import { OperationalReports } from "@/components/dashboard/reports/operational-reports";
 
