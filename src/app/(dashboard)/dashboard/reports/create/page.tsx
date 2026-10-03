@@ -8,6 +8,7 @@ import { z } from "zod";
 import { useCreateCustomerReport } from "@/hooks";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { useQueryClient } from "@tanstack/react-query";
 
 const createCustomerReportSchema = z.object({
   description: z
@@ -19,6 +20,7 @@ const createCustomerReportSchema = z.object({
 export default function CreateCustomerReportPage() {
   const router = useRouter();
 
+  const queryClient = useQueryClient();
   const createReportMutation = useCreateCustomerReport();
 
   const form = useForm({
@@ -32,8 +34,12 @@ export default function CreateCustomerReportPage() {
 
     onSubmit: async ({ value }) => {
       createReportMutation.mutate(value, {
-        onSuccess: () => {
-          router.push("/dashboard/reports");
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({
+                queryKey: ["my-customer-reports"],
+            });
+
+            router.push("/dashboard/reports");
         },
       });
     },
