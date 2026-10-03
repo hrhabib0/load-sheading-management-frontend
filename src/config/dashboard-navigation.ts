@@ -160,7 +160,7 @@ export const dashboardNavigation = {
         {
             title: "Zones",
             href: "/dashboard/zones",
-            icon: Map,
+            icon: MapIcon,
         },
         {
             title: "Notifications",

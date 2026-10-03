@@ -10,12 +10,14 @@ import { loginSchema } from "@/validation";
 import { useLogin } from "@/hooks";
 import { toast } from "@/components/ui/toast";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 
 
 export default function LoginPage() {
 
     const router = useRouter();
+    const [loginError, setLoginError] = useState<string | null>(null);
     const { mutate:login, isPending } = useLogin();
 
     const form = useForm({
@@ -43,10 +45,16 @@ export default function LoginPage() {
                     router.push("/");
                 },
                 onError: (err)=>{
+                    const message =
+                        err.message ||
+                        "Invalid email or password. Please try again.";
+
+                    setLoginError(message);
+
                     toast.add({
-                        title: "Authorization failure",
-                        description: err.message || "Something went wrong. Please try again",
-                        type: "error"
+                        title: "Login Failed",
+                        description: message,
+                        type: "error",
                     });
                 }
             })
@@ -104,10 +112,10 @@ export default function LoginPage() {
                                     />
 
                                     {field.state.meta.errors.length > 0 && (
-                <p className="text-sm text-destructive">
-                    {field.state.meta.errors[0]?.message}
-                </p>
-            )}
+                                        <p className="text-sm text-destructive">
+                                            {field.state.meta.errors[0]?.message}
+                                        </p>
+                                    )}
                                 </div>
                             )}
                         </form.Field>
@@ -147,13 +155,19 @@ export default function LoginPage() {
                                     />
 
                                     {field.state.meta.errors.length > 0 && (
-    <p className="text-sm text-destructive">
-        {field.state.meta.errors[0]?.message}
-    </p>
-)}
+                                        <p className="text-sm text-destructive">
+                                            {field.state.meta.errors[0]?.message}
+                                        </p>
+                                    )}
                                 </div>
                             )}
                         </form.Field>
+
+                        {loginError && (
+                            <div className="rounded-md border border-destructive/20 bg-destructive/10 px-3 py-2 text-sm text-destructive">
+                                {loginError}
+                            </div>
+                        )}
 
                         {/* Submit */}
                         <form.Subscribe>

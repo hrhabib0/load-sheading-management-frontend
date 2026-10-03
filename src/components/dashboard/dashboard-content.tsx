@@ -1,10 +1,11 @@
 import type { UserRole } from "@/types/auth.type";
 import { StatCard } from "./stat-card";
-import { AlertTriangle, CalendarClock, MapPin, Zap } from "lucide-react";
+import { AlertTriangle, CalendarClock, MapPin, Power, Zap } from "lucide-react";
 import { ICustomerProfile, ICustomerReport } from "@/types/customer.type";
 import { ILoadSheddingSchedule } from "@/types/load-shedding.type";
 import { IMyAreaOutageStatus } from "@/types/outage-incident.type";
 import { getPowerStatus } from "./Customer Dashboard/power-status";
+import { PowerOperatorDashboard } from "./power operator/power-operator-dashboard";
 
 interface DashboardContentProps {
     role: UserRole;
@@ -246,16 +247,7 @@ function TechnicianDashboard() {
 
 function OperatorDashboard() {
     return (
-        <div>
-            <h1 className="text-2xl font-bold">
-                Power Operator Dashboard
-            </h1>
-
-            <p className="mt-2 text-muted-foreground">
-                Monitor outages, reports, tasks, and
-                power operations.
-            </p>
-        </div>
+        <PowerOperatorDashboard />
     );
 }
 
