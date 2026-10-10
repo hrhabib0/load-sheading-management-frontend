@@ -9,6 +9,7 @@ import { PowerOperatorDashboard } from "./power operator/power-operator-dashboar
 import { ZoneManagerDashboard } from "./zone manager/zone-manager-dashboard";
 import { CustomerDashboard } from "./Customer Dashboard/customer-dashboard";
 import { TechnicianDashboard } from "./technician/technician-dashboard";
+import AdminDashboard from "./Admin/admin-dashboard";
 
 interface DashboardContentProps {
     role: UserRole;
@@ -21,21 +22,6 @@ interface DashboardContentProps {
 function OperatorDashboard() {
     return (
         <PowerOperatorDashboard />
-    );
-}
-
-
-function AdminDashboard() {
-    return (
-        <div>
-            <h1 className="text-2xl font-bold">
-                Admin Dashboard
-            </h1>
-
-            <p className="mt-2 text-muted-foreground">
-                Manage the entire system.
-            </p>
-        </div>
     );
 }
 

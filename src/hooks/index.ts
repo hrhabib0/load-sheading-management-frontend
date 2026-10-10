@@ -4,3 +4,4 @@ export * from "./customer.hook";
 export * from "./load-shedding.hook";
 export * from "./notification.hook";
 export * from "./work-task.hook";
+export * from "./zone.hook"
