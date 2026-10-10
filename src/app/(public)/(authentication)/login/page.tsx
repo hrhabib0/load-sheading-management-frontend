@@ -22,8 +22,8 @@ export default function LoginPage() {
 
     const form = useForm({
         defaultValues: {
-            email: "tester@tecnician.com",
-            password: "Technician@12345",
+            email: "",
+            password: "",
         },
 
         validators: {
