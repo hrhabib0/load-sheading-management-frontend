@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
@@ -9,6 +9,10 @@ import {
     dashboardNavigation,
     type UserRole,
 } from "@/config/dashboard-navigation";
+import { toast } from "../ui/toast";
+import { useLogout } from "@/hooks";
+import { useQueryClient } from "@tanstack/react-query";
+import { Button } from "../ui/button";
 
 interface DashboardSidebarProps {
     role: UserRole;
@@ -19,6 +23,30 @@ export function DashboardSidebar({
 }: DashboardSidebarProps) {
     const pathname = usePathname();
     const navigation = dashboardNavigation[role];
+    const {mutate:logout} = useLogout();
+    const queryClient = useQueryClient();
+    const router = useRouter();
+
+    const handleLogout = () =>{
+        logout(undefined, {
+            onSuccess: () => {
+                toast.add({
+                    title: "Good Bye!",
+                    description: "Logged out successfully",
+                    type: "success",
+                });
+                queryClient.removeQueries({queryKey:["user"]});
+                router.push("/login");
+            },
+            onError: () => {
+                toast.add({
+                    title: "Logout failed",
+                    description: "Something Went Wrong",
+                    type: "error",
+                });
+            },
+        })
+    }
 
     return (
         <aside className="hidden w-64 shrink-0 border-r bg-background md:flex md:flex-col">
@@ -61,6 +89,9 @@ export function DashboardSidebar({
                         </Link>
                     );
                 })}
+                <Button onClick={handleLogout} variant="destructive">
+                    Logout
+                </Button>
             </nav>
         </aside>
     );

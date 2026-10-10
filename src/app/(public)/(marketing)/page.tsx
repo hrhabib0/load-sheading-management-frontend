@@ -32,7 +32,7 @@ export default function Home() {
                             variant="outline"
                             size="lg"
                         >
-                            <Link href="/about">
+                            <Link href="/about-us">
                                 Learn More
                             </Link>
                         </Button>
