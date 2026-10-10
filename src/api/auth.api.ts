@@ -20,7 +20,7 @@ export const verifyEmail = (payload: IVerifyEmailPayload) => {
 }
 
 export const getMe = () => {
-    return apiClient("/auth/me");
+    return apiClient("/auth/me", {method: "GET"});
 }
 
 export const userLogout = () => {

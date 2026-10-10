@@ -4,22 +4,30 @@ import { Button } from "@/components/ui/button";
 import { useGetMe, useLogout } from "@/hooks";
 import { toast } from "@/components/ui/toast";
 import { useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
     const {data, isLoading} = useGetMe();
     const {mutate:logout} = useLogout();
     const queryClient = useQueryClient();
+    const router = useRouter();
     
     const handleLogout = () =>{
         logout(undefined, {
-            onSuccess: () => {
+            onSuccess: async () => {
+                await queryClient.cancelQueries();
+
+            queryClient.clear();
                 toast.add({
                     title: "Good Bye!",
                     description: "Logged out successfully",
                     type: "success",
                 });
-                queryClient.removeQueries({queryKey:["user"]});
+                router.replace("/login");
+            router.refresh();
+
             },
+            
             onError: () => {
                 toast.add({
                     title: "Logout failed",
