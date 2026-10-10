@@ -81,11 +81,11 @@ export const dashboardNavigation = {
             href: "/dashboard",
             icon: LayoutDashboard,
         },
-        {
-            title: "Outage Incidents",
-            href: "/dashboard/incidents",
-            icon: Zap,
-        },
+        // {
+        //     title: "Outage Incidents",
+        //     href: "/dashboard/incidents",
+        //     icon: Zap,
+        // },
         {
             title: "Customer Reports",
             href: "/dashboard/reports",
@@ -96,16 +96,16 @@ export const dashboardNavigation = {
             href: "/dashboard/tasks",
             icon: Wrench,
         },
-        {
-            title: "Planned Outages",
-            href: "/dashboard/planned-outages",
-            icon: CalendarClock,
-        },
-        {
-            title: "Load Shedding",
-            href: "/dashboard/load-shedding",
-            icon: Zap,
-        },
+        // {
+        //     title: "Planned Outages",
+        //     href: "/dashboard/planned-outages",
+        //     icon: CalendarClock,
+        // },
+        // {
+        //     title: "Load Shedding",
+        //     href: "/dashboard/load-shedding",
+        //     icon: Zap,
+        // },
         {
             title: "Notifications",
             href: "/dashboard/notifications",
@@ -119,11 +119,11 @@ export const dashboardNavigation = {
             href: "/dashboard",
             icon: LayoutDashboard,
         },
-        {
-            title: "Outage Incidents",
-            href: "/dashboard/incidents",
-            icon: Zap,
-        },
+        // {
+        //     title: "Outage Incidents",
+        //     href: "/dashboard/incidents",
+        //     icon: Zap,
+        // },
         {
             title: "Customer Reports",
             href: "/dashboard/reports",
@@ -134,16 +134,16 @@ export const dashboardNavigation = {
             href: "/dashboard/tasks",
             icon: Wrench,
         },
-        {
-            title: "Planned Outages",
-            href: "/dashboard/planned-outages",
-            icon: CalendarClock,
-        },
-        {
-            title: "Load Shedding",
-            href: "/dashboard/load-shedding",
-            icon: Zap,
-        },
+        // {
+        //     title: "Planned Outages",
+        //     href: "/dashboard/planned-outages",
+        //     icon: CalendarClock,
+        // },
+        // {
+        //     title: "Load Shedding",
+        //     href: "/dashboard/load-shedding",
+        //     icon: Zap,
+        // },
     ],
 
     ADMIN: [
@@ -168,10 +168,10 @@ export const dashboardNavigation = {
             href: "/dashboard/notifications",
             icon: Bell,
         },
-        {
-            title: "Settings",
-            href: "/dashboard/settings",
-            icon: Settings,
-        },
+        // {
+        //     title: "Settings",
+        //     href: "/dashboard/settings",
+        //     icon: Settings,
+        // },
     ],
 };
