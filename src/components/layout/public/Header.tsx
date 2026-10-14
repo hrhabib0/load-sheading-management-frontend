@@ -57,18 +57,24 @@ const Header = () => {
                         Home
                     </Link>
 
-                    <Link
+                    {/* <Link
                         href="/outages"
                         className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                     >
                         Outages
-                    </Link>
+                    </Link> */}
 
-                    <Link
+                    {/* <Link
                         href="/load-shedding"
                         className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                     >
                         Load Shedding
+                    </Link> */}
+                    <Link
+                        href="/blogs"
+                        className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                        Blogs
                     </Link>
 
                     <Link
