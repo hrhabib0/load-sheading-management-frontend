@@ -5,3 +5,4 @@ export * from "./load-shedding.api";
 export * from "./outage.api";
 export * from "./notification.api";
 export * from "./work-task.api";
+export * from "./analytics.api";

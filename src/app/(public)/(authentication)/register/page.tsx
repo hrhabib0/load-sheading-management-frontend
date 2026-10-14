@@ -96,25 +96,6 @@ export default function RegisterPage() {
               });
             }
           })
-            // try {
-            //     const response = await mutateAsync({
-            //         name: value.name,
-            //         email: value.email,
-            //         password: value.password,
-            //         phone: value.phone || undefined,
-            //         areaId: value.areaId,
-            //     });
-
-            //     console.log(
-            //         "Registration successful:",
-            //         response,
-            //     );
-            // } catch (error) {
-            //     console.error(
-            //         "Registration failed:",
-            //         error,
-            //     );
-            // }
         },
     });
 

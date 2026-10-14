@@ -6,3 +6,4 @@ export * from "./notification.hook";
 export * from "./work-task.hook";
 export * from "./zone.hook";
 export * from "./user.hook";
+export * from "./analytics.hook";
