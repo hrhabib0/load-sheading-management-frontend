@@ -6,7 +6,6 @@ import { useQueryClient } from "@tanstack/react-query";
 import {
   ArrowLeftFromLine,
   Zap,
-  LayoutDashboard,
   ShieldCheck,
   LogOut,
 } from "lucide-react";
@@ -166,19 +165,6 @@ export function DashboardSidebar({ role }: DashboardSidebarProps) {
 
       {/* Bottom actions */}
       <div className="mt-auto shrink-0 border-t p-4 lg:p-5">
-        {/* <div className="mb-3 rounded-xl bg-muted/40 p-3">
-          <div className="flex items-center gap-2">
-            <span className="flex size-8 items-center justify-center rounded-lg bg-background text-muted-foreground">
-              <LayoutDashboard size={16} />
-            </span>
-            <div>
-              <p className="text-xs font-semibold">PowerGrid Portal</p>
-              <p className="mt-0.5 text-[11px] text-muted-foreground">
-                Electricity management
-              </p>
-            </div>
-          </div>
-        </div> */}
 
         <Button
           variant="outline"
