@@ -6,7 +6,6 @@ import {
     FileWarning,
     LayoutDashboard,
     Map as MapIcon,
-    Settings,
     Users,
     Wrench,
     Zap,
@@ -15,6 +14,7 @@ import {
 export type UserRole =
     | "CUSTOMER"
     | "POWER_OPERATOR"
+    | "TECHNICIAN"
     | "ZONE_MANAGER"
     | "ADMIN";
 
