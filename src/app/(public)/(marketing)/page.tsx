@@ -18,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 import CTA from "@/components/layout/public/Cta";
 import { Features } from "@/components/layout/public/Features";
+import { ContactSection } from "@/components/layout/public/ContactUs";
 
 const features = [
   {
@@ -404,6 +405,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Contact Us Section */}
+      <ContactSection />
 
       {/* CTA */}
       <CTA />

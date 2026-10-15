@@ -11,6 +11,7 @@ import {
   LogIn,
   LogOut,
   Menu,
+  MessageSquare,
   ShieldCheck,
   X,
   Zap,
@@ -25,6 +26,7 @@ const navigation = [
   { label: "Home", href: "/", icon: Zap },
   { label: "Blogs", href: "/blogs", icon: BookOpen },
   { label: "About Us", href: "/about-us", icon: ShieldCheck },
+  { label: "Contact Us", href: "/contact-us", icon: MessageSquare },
 ];
 
 const Header = () => {
