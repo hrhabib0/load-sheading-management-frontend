@@ -1,5 +1,6 @@
 export * from "./auth.hooks";
 export * from "./area.hook";
+export * from "./outage.hook";
 export * from "./customer.hook";
 export * from "./load-shedding.hook";
 export * from "./notification.hook";

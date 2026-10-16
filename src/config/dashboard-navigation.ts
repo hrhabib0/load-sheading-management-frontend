@@ -81,11 +81,11 @@ export const dashboardNavigation = {
             href: "/dashboard",
             icon: LayoutDashboard,
         },
-        // {
-        //     title: "Outage Incidents",
-        //     href: "/dashboard/incidents",
-        //     icon: Zap,
-        // },
+        {
+            title: "Outage Incidents",
+            href: "/dashboard/outage-incidents",
+            icon: Zap,
+        },
         {
             title: "Customer Reports",
             href: "/dashboard/reports",
@@ -161,6 +161,11 @@ export const dashboardNavigation = {
             title: "Zones",
             href: "/dashboard/zones",
             icon: MapIcon,
+        },
+        {
+            title: "Reports",
+            href: "/dashboard/reports",
+            icon: FileWarning,
         },
         
         {

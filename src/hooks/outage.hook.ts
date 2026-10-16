@@ -1,5 +1,6 @@
-import { getAllOutageIncidents, getAllPlannedOutages, getMyAreaOutageStatus } from "@/api";
-import { useQuery } from "@tanstack/react-query";
+import { getAllOutageIncidents, getAllPlannedOutages, getMyAreaOutageStatus, linkCustomerReport } from "@/api";
+import { ILinkCustomerReportVariables } from "@/types/outage-incident.type";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useGetMyAreaOutageStatus = () => {
   return useQuery({
@@ -24,5 +25,31 @@ export const useGetAllPlannedOutages = (enabled = true) => {
     queryFn: getAllPlannedOutages,
     enabled,
     retry: false,
+  });
+};
+
+export const useLinkCustomerReport = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({
+      incidentId,
+      payload,
+    }: ILinkCustomerReportVariables) =>
+      linkCustomerReport(incidentId, payload),
+
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: ["my-customer-reports"],
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ["customer-reports"],
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ["outage-incidents"],
+        }),
+      ]);
+    },
   });
 };

@@ -7,6 +7,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Building2,
+  FileWarning,
   MapPinned,
   ShieldCheck,
   Users,
@@ -316,6 +317,12 @@ export default function AdminDashboard() {
               title="Manage system users"
               description="Review registered accounts and roles."
               icon={Users}
+            />
+            <QuickAction
+              href="/dashboard/reports"
+              title="Manage reports"
+              description="Review and manage customer reports."
+              icon={FileWarning}
             />
 
             <QuickAction

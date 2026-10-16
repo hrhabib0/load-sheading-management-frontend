@@ -134,3 +134,17 @@ export interface IPlannedOutage {
     };
   }[];
 }
+
+export interface ILinkCustomerReportPayload {
+  reportId: string;
+}
+
+export interface ILinkCustomerReportResponse {
+  success: boolean;
+  message: string;
+}
+
+export interface ILinkCustomerReportVariables {
+  incidentId: string;
+  payload: ILinkCustomerReportPayload;
+}
