@@ -1,5 +1,14 @@
 import apiClient from "@/lib/apiClient";
-import { IWorkTask } from "@/types/work-task.type";
+import { ICreateWorkTaskPayload, ICreateWorkTaskResponse, IWorkTask } from "@/types/work-task.type";
+
+export const createWorkTask = async (
+  payload: ICreateWorkTaskPayload,
+): Promise<ICreateWorkTaskResponse> => {
+  return apiClient<ICreateWorkTaskResponse>("/work-tasks/create-task", {
+    method: "POST",
+    body: payload,
+  });
+};
 
 export const getAllWorkTasks = () => {
   return apiClient<{ data: IWorkTask[] }>("/work-tasks", {

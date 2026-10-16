@@ -1,5 +1,24 @@
-import { acceptWorkTask, completeWorkTask, failWorkTask, getAllWorkTasks, rejectWorkTask, startWorkTask } from "@/api";
+import { acceptWorkTask, completeWorkTask, createWorkTask, failWorkTask, getAllWorkTasks, rejectWorkTask, startWorkTask } from "@/api";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+
+
+export const useCreateWorkTask = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: createWorkTask,
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: ["work-tasks"],
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ["outage-incidents"],
+        }),
+      ]);
+    },
+  });
+};
 
 export const useGetAllWorkTasks = (enabled = true) => {
   return useQuery({

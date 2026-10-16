@@ -60,3 +60,15 @@ export interface IWorkTask {
     };
   };
 }
+
+export interface ICreateWorkTaskPayload {
+  incidentId: string;
+  title: string;
+  description: string;
+}
+
+export interface ICreateWorkTaskResponse {
+  success: boolean;
+  message: string;
+  data?: IWorkTask;
+}
